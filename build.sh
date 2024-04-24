@@ -13,15 +13,12 @@ RELEASE="$(rpm -E %fedora)"
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-rpm-ostree install screen
+EXCLUDED="bcache-tools fish gcc glow libimobiledevice stress-ng tailscale tmux usbmuxd openssh-askpass gnome-shell-extension-tailscale-gnome-q"
 
-# this would install a package from rpmfusion
-#RUN rpm-ostree install vlc
+EXTRA="openssh-askpass-gnome"
 
+rpm-ostree override remove $EXCLUDED
 
+rpm-ostree install $EXTRA
 
-#### Change to System Configuration Files
-
-# this example modifies default timeouts to prevent slow reboots from services that won't stop
-sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf
-sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf
+systemctl enable podman.socket
