@@ -22,6 +22,7 @@ RUN mkdir -p /var/lib/alternatives && \
 RUN \
     wget --no-hsts https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-"${RELEASE}"/kylegospo-system76-scheduler-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo && \
     wget --no-hsts https://copr.fedorainfracloud.org/coprs/ganto/lxc4/repo/fedora-"${RELEASE}"/ganto-lxc4-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/ganto-lxc4-fedora-"${RELEASE}".repo && \
+    wget --no-hsts https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-"${RELEASE}"/kylegospo-rom-properties-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_kylegospo-rom-properties.repo && \
     ostree container commit
 
 # remove unnecessary packages
