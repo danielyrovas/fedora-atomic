@@ -28,10 +28,10 @@ RUN \
     ostree container commit
 
 # Fedora coprs
+# wget --no-hsts https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-"${RELEASE}"/kylegospo-system76-scheduler-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo && \
+# wget --no-hsts https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-"${RELEASE}"/kylegospo-rom-properties-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_kylegospo-rom-properties.repo && \
 RUN \
-    wget --no-hsts https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-"${RELEASE}"/kylegospo-system76-scheduler-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo && \
     wget --no-hsts https://copr.fedorainfracloud.org/coprs/ganto/lxc4/repo/fedora-"${RELEASE}"/ganto-lxc4-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/ganto-lxc4-fedora-"${RELEASE}".repo && \
-    wget --no-hsts https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-"${RELEASE}"/kylegospo-rom-properties-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_kylegospo-rom-properties.repo && \
     wget --no-hsts https://copr.fedorainfracloud.org/coprs/wezfurlong/wezterm-nightly/repo/fedora-"${RELEASE}"/wezfurlong-wezterm-nightly-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_wezterm-nightly.repo && \
     ostree container commit
 
