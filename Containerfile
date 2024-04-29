@@ -40,6 +40,12 @@ RUN rpm-ostree install wmctrl vulkan-tools switcheroo-control && \
     ostree container commit
 RUN rpm-ostree install podman-tui jetbrains-mono-fonts-all btop incus incus-agent && \
     ostree container commit
+RUN rpm-ostree install qemu qemu-device-display-virtio-gpu \
+    qemu-device-display-virtio-vga qemu-device-usb-redirect \
+    qemu-char-spice qemu-img qemu-system-x86-core qemu-user-binfmt \
+    qemu-user-static virt-manager virt-viewer libvirt && \
+    ostree container commit
+
 RUN rpm-ostree install wezterm && \
     ostree container commit
 
