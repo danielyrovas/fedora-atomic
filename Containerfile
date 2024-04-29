@@ -32,22 +32,28 @@ RUN \
     wget --no-hsts https://copr.fedorainfracloud.org/coprs/wezfurlong/wezterm-nightly/repo/fedora-"${RELEASE}"/wezfurlong-wezterm-nightly-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_wezterm-nightly.repo && \
     ostree container commit
 
-RUN rpm-ostree install steam lutris mangohud && \
-    ostree container commit
-RUN rpm-ostree install wine wine-core winetricks protontricks && \
-    ostree container commit
-RUN rpm-ostree install wmctrl vulkan-tools switcheroo-control && \
-    ostree container commit
-RUN rpm-ostree install podman-tui jetbrains-mono-fonts-all btop incus incus-agent && \
-    ostree container commit
+RUN rpm-ostree install steam lutris mangohud \
+    && ostree container commit
+RUN rpm-ostree install wine wine-core winetricks protontricks \
+    && ostree container commit
+
+RUN rpm-ostree install wmctrl vulkan-tools switcheroo-control \
+    && ostree container commit
+
+RUN rpm-ostree install podman-tui jetbrains-mono-fonts-all btop incus incus-agent \
+    && ostree container commit
+
 RUN rpm-ostree install qemu qemu-device-display-virtio-gpu \
     qemu-device-display-virtio-vga qemu-device-usb-redirect \
     qemu-char-spice qemu-img qemu-system-x86-core qemu-user-binfmt \
-    qemu-user-static virt-manager virt-viewer libvirt && \
-    ostree container commit
+    && ostree container commit
+RUN rpm-ostree install \
+    qemu-user-static virt-manager virt-viewer libvirt \
+    && ostree container commit
 
-RUN rpm-ostree install wezterm && \
-    ostree container commit
+RUN rpm-ostree install wezterm \
+    && ostree container commit
 
-RUN systemctl enable podman.socket && \
-    ostree container commit
+RUN systemctl enable podman.socket \
+    && ostree container commit
+
