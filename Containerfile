@@ -16,7 +16,6 @@ LABEL org.opencontainers.image.source https://github.com/danielyrovas/fedora-ato
 RUN mkdir -p /var/lib/alternatives && \
     ostree container commit
 
-# gamemode
 RUN \
     if [[ "${RELEASE}" =~ "bluefin" ]]; then \
     echo "removing bluefin packeges" \
@@ -28,8 +27,6 @@ RUN \
     ostree container commit
 
 # Fedora coprs
-# wget --no-hsts https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-"${RELEASE}"/kylegospo-system76-scheduler-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo && \
-# wget --no-hsts https://copr.fedorainfracloud.org/coprs/kylegospo/rom-properties/repo/fedora-"${RELEASE}"/kylegospo-rom-properties-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_kylegospo-rom-properties.repo && \
 RUN \
     wget --no-hsts https://copr.fedorainfracloud.org/coprs/ganto/lxc4/repo/fedora-"${RELEASE}"/ganto-lxc4-fedora-"${RELEASE}".repo -O /etc/yum.repos.d/ganto-lxc4-fedora-"${RELEASE}".repo && \
     wget --no-hsts https://copr.fedorainfracloud.org/coprs/wezfurlong/wezterm-nightly/repo/fedora-"${RELEASE}"/wezfurlong-wezterm-nightly-"${RELEASE}".repo -O /etc/yum.repos.d/_copr_wezterm-nightly.repo && \
@@ -41,8 +38,6 @@ RUN rpm-ostree install wine wine-core winetricks protontricks && \
     ostree container commit
 RUN rpm-ostree install wmctrl vulkan-tools switcheroo-control && \
     ostree container commit
-# RUN rpm-ostree install rom-properties-gtk3 system76-scheduler && \
-#     ostree container commit
 RUN rpm-ostree install podman-tui jetbrains-mono-fonts-all btop incus incus-agent && \
     ostree container commit
 RUN rpm-ostree install wezterm && \
@@ -50,5 +45,3 @@ RUN rpm-ostree install wezterm && \
 
 RUN systemctl enable podman.socket && \
     ostree container commit
-
-# TODO: wezterm
